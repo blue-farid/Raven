@@ -7,7 +7,7 @@ function Header() {
     return (
         <Box bg="blue.500" p={4}>
             <Flex>
-                <Heading color="white">Messenger App</Heading>
+                <Heading color="white">Raven Messenger</Heading>
             </Flex>
         </Box>
     );
