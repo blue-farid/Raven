@@ -21,15 +21,6 @@ public class ClientController {
     public ResponseEntity<ClientDTO> getClient(@PathVariable Long id) {
         return ResponseEntity.ok(clientService.getClient(id));
     }
-
-    @PostMapping("/register")
-    public ResponseEntity<SignupResponse> register(@RequestBody ClientDTO client) {
-        return ResponseEntity.ok(clientService.signup(client));
-    }
-    @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
-        return ResponseEntity.ok(clientService.login(request));
-    }
     @GetMapping
     public ResponseEntity<List<ClientDTO>> getClients() {
         return ResponseEntity.ok(clientService.getAll());
