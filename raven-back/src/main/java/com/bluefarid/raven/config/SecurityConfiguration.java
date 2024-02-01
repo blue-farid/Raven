@@ -47,7 +47,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/api/client/login", "/api/client/register", "/swagger-ui/**", "/swagger-ui.html",
+                        .requestMatchers("/api/auth/**", "/api/picture/**", "/swagger-ui/**", "/swagger-ui.html",
                                 "/javadoc").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
