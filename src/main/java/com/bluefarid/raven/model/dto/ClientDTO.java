@@ -1,12 +1,12 @@
 package com.bluefarid.raven.model.dto;
 
-import com.bluefarid.raven.domain.User;
+import com.bluefarid.raven.domain.Client;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class UserDTO {
+public class ClientDTO {
     private Long id;
     private String firstname;
     private String lastname;
@@ -15,5 +15,5 @@ public class UserDTO {
     private String password;
     private String image;
     private String bio;
-    private List<User> contacts;
+    private List<Client> contacts;
 }

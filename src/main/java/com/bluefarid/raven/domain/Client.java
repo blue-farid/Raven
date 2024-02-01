@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class User {
+public class Client {
     @Id
     private Long id;
     private String firstname;
@@ -22,6 +22,6 @@ public class User {
     private String image;
     private String bio;
     @OneToMany(fetch = FetchType.LAZY)
-    private List<User> contacts;
+    private List<Client> contacts;
 
 }
