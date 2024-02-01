@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientService {
     private final ClientRepository repository;
-    private final ClientMapper mapper;
+    private final ClientMapper mapper = ClientMapper.INSTANCE;
 
     public ClientDTO getClient(Long id) {
         return mapper.toDTO(repository.findById(id).orElseThrow(ClientNotFoundException::new));
