@@ -26,14 +26,9 @@ public class ClientController {
         return ResponseEntity.ok(clientService.getAll());
     }
 
-    @PostMapping
-    public ResponseEntity<ClientDTO> addClient(@RequestBody CreateClientRequest createClientRequest) {
-        return null;
-    }
-
-    @PutMapping
-    public ResponseEntity<ClientDTO> updateClient(@RequestBody UpdateClientRequest updateClientRequest) {
-        return null;
+    @GetMapping("/{id}/contacts")
+    public ResponseEntity<List<ClientDTO>> getContacts(@PathVariable Long id) {
+        return ResponseEntity.ok(clientService.getContact(id));
     }
 
     @DeleteMapping("/{id}")

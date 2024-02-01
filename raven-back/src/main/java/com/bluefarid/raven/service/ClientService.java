@@ -23,4 +23,8 @@ public class ClientService {
     public List<ClientDTO> getAll() {
         return mapper.toDTO(repository.findAll());
     }
+
+    public List<ClientDTO> getContact(Long id) {
+        return mapper.toDTO(repository.findById(id).orElseThrow(ClientNotFoundException::new).getContacts());
+    }
 }
