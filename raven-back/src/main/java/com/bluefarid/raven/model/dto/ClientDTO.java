@@ -3,6 +3,7 @@ package com.bluefarid.raven.model.dto;
 import com.bluefarid.raven.domain.Client;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,5 +16,5 @@ public class ClientDTO {
     private String password;
     private String image;
     private String bio;
-    private List<Client> contacts;
+    private List<ClientDTO> contacts = new ArrayList<>();
 }

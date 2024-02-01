@@ -2,7 +2,7 @@ package com.bluefarid.raven.model.mapper;
 
 import com.bluefarid.raven.domain.Client;
 import com.bluefarid.raven.model.dto.ClientDTO;
-import com.bluefarid.raven.model.request.CreateClientRequest;
+import com.bluefarid.raven.model.response.SignupResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -16,4 +16,8 @@ public interface ClientMapper {
     List<ClientDTO> toDTO(List<Client> client);
     Client toEntity(ClientDTO dto);
     List<Client> toEntity(List<ClientDTO> dto);
+    default SignupResponse toSignupResponse(Client client, String token) {
+        ClientDTO dto = toDTO(client);
+        return new SignupResponse().setClient(dto).setToken(token);
+    }
 }
