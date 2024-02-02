@@ -3,6 +3,7 @@ package com.bluefarid.raven.domain;
 import com.bluefarid.raven.security.Role;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +18,7 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
 public class Client implements UserDetails {
     @Id
     private Long id;
