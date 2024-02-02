@@ -21,4 +21,5 @@ public class Chat {
     @OneToMany
     @ToString.Exclude
     private List<Message> messages;
+    private String type;
 }
