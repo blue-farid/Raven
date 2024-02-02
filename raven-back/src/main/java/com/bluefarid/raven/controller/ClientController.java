@@ -4,9 +4,11 @@ import com.bluefarid.raven.model.dto.ClientDTO;
 import com.bluefarid.raven.model.request.LoginRequest;
 import com.bluefarid.raven.model.response.LoginResponse;
 import com.bluefarid.raven.model.response.SignupResponse;
+import com.bluefarid.raven.security.Role;
 import com.bluefarid.raven.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,11 +19,13 @@ import java.util.List;
 public class ClientController {
     private final ClientService clientService;
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/{id}")
     public ResponseEntity<ClientDTO> getClient(@PathVariable Long id) {
         return ResponseEntity.ok(clientService.getClient(id));
     }
     @GetMapping
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<List<ClientDTO>> getClients() {
         return ResponseEntity.ok(clientService.getAll());
     }
@@ -42,6 +46,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
         clientService.deleteClient(id);
         return ResponseEntity.ok().build();
