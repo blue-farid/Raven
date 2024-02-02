@@ -7,5 +7,5 @@ package com.bluefarid.raven.domain;
  * @author Farid Masjedi
  */
 public enum PictureType {
-    PROFILE
+    PROFILE, IN_CHAT
 }
