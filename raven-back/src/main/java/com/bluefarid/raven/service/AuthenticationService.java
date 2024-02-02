@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
     private final ClientRepository clientRepository;
     private final PasswordEncoder passwordEncoder;
-    private final ClientMapper clientMapper;
+    private final ClientMapper clientMapper = ClientMapper.INSTANCE;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
