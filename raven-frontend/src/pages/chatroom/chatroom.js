@@ -7,7 +7,7 @@ function Chatroom() {
     return (
         <div>
             <Header/>
-            <div style={{display: 'flex', height: 'calc(100vh - 50px)'}}>
+            <div style={{display: 'flex', height: 'calc(100vh - 75px)'}}>
                 <Contacts/>
                 <Messaging/>
             </div>
