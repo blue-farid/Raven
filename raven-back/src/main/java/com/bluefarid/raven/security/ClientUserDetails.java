@@ -1,5 +1,6 @@
 package com.bluefarid.raven.security;
 
+import com.bluefarid.raven.domain.RoleEntity;
 import lombok.Data;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,5 +14,5 @@ public class ClientUserDetails implements UserDetails {
     private boolean isEnabled;
     private String password;
     private String username;
-    private Collection<Role> authorities;
+    private Collection<RoleEntity> authorities;
 }

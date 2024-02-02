@@ -21,6 +21,7 @@ import java.util.List;
 @Accessors(chain = true)
 public class Client implements UserDetails {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstname;
     private String lastname;
