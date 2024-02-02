@@ -31,8 +31,19 @@ public class ClientController {
         return ResponseEntity.ok(clientService.getContact(id));
     }
 
+    @PatchMapping("/{id}/contact/{contactId}")
+    public ResponseEntity<ClientDTO> addContact(@PathVariable Long id, @PathVariable Long contactId) {
+        return ResponseEntity.ok(clientService.addContact(id, contactId));
+    }
+
+    @DeleteMapping("/{id}/contact/{contactId}")
+    public ResponseEntity<ClientDTO> deleteContact(@PathVariable Long id, @PathVariable Long contactId) {
+        return ResponseEntity.ok(clientService.deleteContact(id, contactId));
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<ClientDTO> deleteClient(@PathVariable Long id) {
-        return null;
+    public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
+        clientService.deleteClient(id);
+        return ResponseEntity.ok().build();
     }
 }

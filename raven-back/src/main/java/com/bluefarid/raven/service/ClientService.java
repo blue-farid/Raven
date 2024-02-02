@@ -1,5 +1,6 @@
 package com.bluefarid.raven.service;
 
+import com.bluefarid.raven.domain.Client;
 import com.bluefarid.raven.exception.ClientNotFoundException;
 import com.bluefarid.raven.model.dto.ClientDTO;
 import com.bluefarid.raven.model.mapper.ClientMapper;
@@ -28,6 +29,22 @@ public class ClientService {
 
     public List<ClientDTO> getContact(Long id) {
         return mapper.toDTO(repository.findById(id).orElseThrow(ClientNotFoundException::new).getContacts());
+    }
+
+    public ClientDTO addContact(Long id, Long contactId) {
+        Client c = repository.findById(id).orElseThrow(ClientNotFoundException::new);
+        c.getContacts().add(repository.findById(contactId).orElseThrow(ClientNotFoundException::new));
+        return mapper.toDTO(repository.save(c));
+    }
+
+    public ClientDTO deleteContact(Long id, Long contactId) {
+        Client c = repository.findById(id).orElseThrow(ClientNotFoundException::new);
+        c.getContacts().removeIf(client -> client.getId().equals(contactId));
+        return mapper.toDTO(repository.save(c));
+    }
+
+    public void deleteClient(Long id) {
+        repository.deleteById(id);
     }
 
     public UserDetailsService userDetailsService() {
