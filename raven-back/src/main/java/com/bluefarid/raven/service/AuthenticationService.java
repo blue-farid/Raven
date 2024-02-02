@@ -2,6 +2,7 @@ package com.bluefarid.raven.service;
 
 import com.bluefarid.raven.domain.Client;
 import com.bluefarid.raven.model.dto.ClientDTO;
+import com.bluefarid.raven.model.mapper.ClientMapper;
 import com.bluefarid.raven.model.request.LoginRequest;
 import com.bluefarid.raven.model.response.LoginResponse;
 import com.bluefarid.raven.model.response.SignupResponse;
@@ -18,16 +19,17 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
     private final ClientRepository clientRepository;
     private final PasswordEncoder passwordEncoder;
+    private final ClientMapper clientMapper;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public SignupResponse signup(ClientDTO request) {
-        var user = Client.builder().username(request.getUsername())
+        Client user = Client.builder().username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.ROLE_ADMIN).build();
-        clientRepository.save(user);
+        user = clientRepository.save(user);
         var jwt = jwtService.generateToken(user);
-        return new SignupResponse().setToken(jwt);
+        return new SignupResponse().setToken(jwt).setClient(clientMapper.toDTO(user));
     }
 
     public LoginResponse login(LoginRequest request) {
