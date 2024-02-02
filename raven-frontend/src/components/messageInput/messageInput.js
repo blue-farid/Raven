@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Button, Flex } from '@chakra-ui/react';
+import {Form} from "react-router-dom";
 
 function MessageInput({ onSendMessage }) {
     const [message, setMessage] = useState('');
@@ -14,17 +15,19 @@ function MessageInput({ onSendMessage }) {
     };
 
     return (
-        <Flex p={2}>
-            <Input
-                placeholder="Type your message..."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                mr={2}
-            />
-            <Button onClick={handleSendMessage}>
-                Send
-            </Button>
-        </Flex>
+        <Form onSubmit={handleSendMessage}>
+            <Flex p={2}>
+                <Input
+                    placeholder="Type your message..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    mr={2}
+                />
+                <Button type={"submit"}>
+                    Send
+                </Button>
+            </Flex>
+        </Form>
     );
 }
 

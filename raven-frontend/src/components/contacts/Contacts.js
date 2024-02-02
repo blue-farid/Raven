@@ -5,7 +5,8 @@ import {Box, List, ListItem, Text} from '@chakra-ui/react';
 
 const contactsData = [
     { id: 1, name: 'John Doe' },
-    { id: 2, name: 'Jane Doe' }
+    { id: 2, name: 'Jane Doe' },
+    { id: 3, name: 'Saman Joon' },
 ];
 
 function Contacts() {
